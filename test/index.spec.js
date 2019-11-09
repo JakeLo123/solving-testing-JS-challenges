@@ -1,4 +1,4 @@
-const { destroyer, birthdayCakeCandles } = require('../index.js');
+const { destroyer, birthdayCakeCandles, balancedBrackets } = require('../index.js');
 const { assert, expect } = require('chai');
 
 describe('code challenges', function() {
@@ -34,6 +34,16 @@ describe('code challenges', function() {
 			expect(birthdayCakeCandles([ 4 ])).to.equal(1);
 			expect(birthdayCakeCandles([ 3, 6, 11, 11, 19 ])).to.equal(1);
 			expect(birthdayCakeCandles([ 3, 6, 11, 11, 19 ])).to.equal(1);
+		});
+	});
+	describe('balancedBrackets', function() {
+		it('returns true if brackets are balanced', function() {
+			assert.equal(balancedBrackets('()'), true, '()');
+			assert.equal(balancedBrackets('[()]'), true, '[()]');
+			assert.equal(balancedBrackets('{[()}]'), false, '{[()}]');
+			assert.equal(balancedBrackets('{[()]}'), true, '{[()]}');
+			assert.equal(balancedBrackets('{[()]()}'), true, '{[()]()}');
+			assert.equal(balancedBrackets('{()]()}'), false, '{()]()}');
 		});
 	});
 });

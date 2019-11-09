@@ -17,7 +17,28 @@ function birthdayCakeCandles(arr) {
 	return max.count;
 }
 
+function balancedBrackets(str) {
+	if (str.length % 2 !== 0) return false;
+	let stack = [];
+	let isOpener = { '(': true, '{': true, '[': true };
+	let match = { '(': ')', '{': '}', '[': ']' };
+	for (let i = 0; i < str.length; ++i) {
+		let bracket = str[i];
+		if (isOpener[bracket]) {
+			stack.push(bracket);
+		} else if (match[stack[stack.length - 1]] === bracket) {
+			stack.pop();
+			continue;
+		} else {
+			return false;
+		}
+	}
+	if (stack.length) return false;
+	else return true;
+}
+
 module.exports = {
 	destroyer,
-	birthdayCakeCandles
+	birthdayCakeCandles,
+	balancedBrackets
 };
